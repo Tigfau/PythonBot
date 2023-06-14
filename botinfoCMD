@@ -1,6 +1,20 @@
 
+import discord
+from discord.ext import commands, tasks
+import asyncio
+
+client = commands.Bot(
+  command_prefix='YOURPREFIX', # Le prÃ©fix pour les commandes est "YOUR PREFIX" 
+  case_insensitive=False,
+  description=None, #La description de votre bot
+  intents=discord.Intents.all(), #Les intents
+  help_command=None #Désactive la commande help générer par défaut.
+)
+
+from discord.ext import tasks
+
 @commands.command()
-    async def botinfo(self, ctx):
+async def botinfo(self, ctx):
         numberserv = self.client.guilds
         userscount = self.client.users
         embed = discord.Embed(title="Informations sur le Bot", color=0x00C3FF)

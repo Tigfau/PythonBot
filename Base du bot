@@ -20,10 +20,10 @@ async def on_guild_join(guild):
     channel = client.get_channel(IDCHANNEL)  # ID du salon où envoyer le message
     await channel.send(f"") #Contenu à envoyer dans le salon socker dans la variable Channel.
 
-
-status = ["Tapez so!help pour de l'aide.",
-		"Version 0.0.5",
-        f"Hey"]
+#défini le statut
+status = ["TEXT",
+		"Version 0.DFDF0.5",
+        f"HELLO"]
 		#f"{len(client.guilds)} Serveurs"]
 
 @client.event
@@ -31,7 +31,7 @@ async def on_ready():
 	print("Ready !")
 	changeStatus.start()
 
-
+#le status change tout les 5 secondes
 @tasks.loop(seconds = 5)
 async def changeStatus():
 	game = discord.Game(random.choice(status))

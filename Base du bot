@@ -1,0 +1,57 @@
+import discord
+from discord.ext import commands, tasks
+import asyncio
+
+client = commands.Bot(
+  command_prefix='YOURPREFIX', # Le prÃ©fix pour les commandes est "YOUR PREFIX" 
+  case_insensitive=False,
+  description=None, #La description de votre bot
+  intents=discord.Intents.all(), #Les intents
+  help_command=None #Désactive la commande help générer par défaut.
+)
+
+from discord.ext import tasks
+
+
+
+@client.event
+#Quand le bot est ajouté dans un nouveau serveur.
+async def on_guild_join(guild):
+    channel = client.get_channel(IDCHANNEL)  # ID du salon où envoyer le message
+    await channel.send(f"") #Contenu à envoyer dans le salon socker dans la variable Channel.
+
+
+status = ["Tapez so!help pour de l'aide.",
+		"Version 0.0.5",
+        f"Hey"]
+		#f"{len(client.guilds)} Serveurs"]
+
+@client.event
+async def on_ready():
+	print("Ready !")
+	changeStatus.start()
+
+
+@tasks.loop(seconds = 5)
+async def changeStatus():
+	game = discord.Game(random.choice(status))
+	await client.change_presence(status = discord.Status.dnd, activity = game)
+
+
+@client.event
+async def on_command_error(ctx, error):
+    embed = discord.Embed(title="Erreur de la commande",description=f'Erreur: {error}', color=0x00C3FF)
+
+
+                # Envoyer l'embed dans le canal de commande
+    await ctx.reply(embed=embed)
+    
+
+
+
+async def main():
+    await client.start("VOTRE TOKEN ICI")
+
+asyncio.run(main())
+
+

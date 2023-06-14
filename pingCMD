@@ -16,7 +16,7 @@ from discord.ext import tasks
 
 @client.command()
 # défini le nom de la commande & les arguments potentiels
-    async def ping(self, ctx):
+async def ping(self, ctx):
         """Donne le ping du bot."""
         latency = round(self.client.latency * 1000)
         await ctx.send(f'Pong! {latency}ms')

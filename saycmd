@@ -13,7 +13,7 @@ client = commands.Bot(
 from discord.ext import tasks
 
  @client.command()
-    async def say(self, ctx, *texte):
-          await ctx.send(" ".join(texte))
+async def say(self, ctx, *texte):
+      await ctx.send(" ".join(texte))
                 
               
